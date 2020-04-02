@@ -1,0 +1,6 @@
+applications:
+- name: rps-xp
+  path: build/libs/rps-0.0.1-SNAPSHOT.jar
+  random-route: true
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+}}'
