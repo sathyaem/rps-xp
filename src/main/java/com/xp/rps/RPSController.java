@@ -10,10 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class RPSController {
 
 
+    RPSRepo repo;
+
+    public RPSController (RPSRepo repo) {
+        this.repo = repo;
+    }
+
     @PostMapping ("/play")
     public ResponseEntity<String> play(@RequestBody PlayRequest playRequest) {
 
         Results playResult = RPS.play(playRequest.getP1(), playRequest.getP2());
+        repo.addCount();
         ResponseEntity<String> responseEntity = new ResponseEntity(playResult.toString(), HttpStatus.OK);
         return responseEntity;
 
